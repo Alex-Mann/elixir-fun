@@ -1,6 +1,8 @@
 # to test this on the command line we run:
 # iex -S mix
 
+# Notes:
+# Pattern matching is elixirs version of variable assignment
 defmodule Cards do
   # these methods get automatically returned, can also write like:
   # def create_deck do
@@ -29,6 +31,10 @@ defmodule Cards do
     Enum.split(deck, hand_size)
   end
     
+  def save(deck, filename) do
+    binary = :erlang.term_to_binary(deck)
+    File.write(filename, binary)
+  end
   @moduledoc """
   Documentation for ElixirCards.
   """
